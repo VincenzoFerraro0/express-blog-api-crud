@@ -1,5 +1,4 @@
 // array dei posts
-
 const posts = [
     {
         title: "Cracker alla barbabietola",
