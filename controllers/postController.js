@@ -1,6 +1,6 @@
 // Importa l'array dei post da un file esterno.
 // Questo array funge da "database" per i post.
-import arrayPosts from '../data/arrayPosts.js'
+import arrayPosts from '../data/posts.js'
 
 /**
  * Funzione: index
@@ -14,14 +14,15 @@ function index(req, res) {
 
     // Inizializza la variabile filterPosts con tutti i post disponibili.
     let filterPosts = arrayPosts;
-
+    
     // Se è presente il parametro "tags" nella query della richiesta,
     // filtra i post per includere solo quelli che contengono il tag specificato.
     if (req.query.tags) {
         filterPosts = arrayPosts.filter(
-            post => post.tags.includes(req.query.tags)
+            post => post.tags.includes(req.query.tags) 
         );
     }
+    
 
     // Invia i post (filtrati o meno) come risposta in formato JSON.
     res.json(filterPosts);
@@ -65,7 +66,28 @@ function show(req, res) {
  * @param {Object} res - L'oggetto risposta (response) Express.
  */
 function store(req, res) {
-    res.send('Creazione di un nuovo post');
+
+
+    const newId = arrayPosts[arrayPosts.length - 1].id + 1;
+
+
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        image: req.body.image,
+        tags: req.body.tags
+    }
+
+
+    arrayPosts.push(newPost);
+
+
+    console.log(arrayPosts);
+
+
+
+    res.status(201);
+    res.json(newPost);
 }
 
 /**
@@ -77,7 +99,32 @@ function store(req, res) {
  * @param {Object} res - L'oggetto risposta (response) Express.
  */
 function update(req, res) {
-    res.send('Modifica integrale del post ' + req.params.id);
+
+       const id = parseInt(req.params.id)
+
+
+       const post = arrayPosts.find(post => post.id === id);
+   
+
+       if (!post) {
+           res.status(404);
+   
+           return res.json({
+               error: "Not Found",
+               message: "Post non trovato"
+           })
+       }
+   
+       // Aggiorniamo la pizza
+       post.title = req.body.title;
+       post.image = req.body.image;
+       post.tags = req.body.tags;
+   
+
+       console.log(arrayPosts)
+   
+
+       res.json(post);
 }
 
 /**
