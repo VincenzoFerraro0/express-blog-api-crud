@@ -115,7 +115,7 @@ function update(req, res) {
            })
        }
    
-       // Aggiorniamo la pizza
+
        post.title = req.body.title;
        post.image = req.body.image;
        post.tags = req.body.tags;

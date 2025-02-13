@@ -8,6 +8,7 @@ const port = 3000; // Definisce la porta su cui il server ascolterà
 app.use(express.static('public'));
 
 
+// Middleware per abilitare il parsing del JSON nelle richieste
 app.use(express.json());
 
 // Definisce la rotta principale della homepage
