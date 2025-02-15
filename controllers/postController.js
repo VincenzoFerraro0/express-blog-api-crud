@@ -15,6 +15,7 @@ function index(req, res) {
     // Inizializza la variabile filterPosts con tutti i post disponibili.
     let filterPosts = arrayPosts;
     
+    // pippo.get()
     // Se è presente il parametro "tags" nella query della richiesta,
     // filtra i post per includere solo quelli che contengono il tag specificato.
     if (req.query.tags) {
@@ -40,6 +41,7 @@ function show(req, res) {
     // Converte il parametro 'id' presente nell'URL in un numero intero.
     const id = parseInt(req.params.id);
 
+    
     // Cerca il post nell'array che corrisponde all'ID specificato.
     const post = arrayPosts.find(post => post.id === id);
 
