@@ -1,23 +1,19 @@
 {
   "name": "express-blog-api-crud",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "strat": "node app.js",
+    "start": "node  app.js",
     "watch": "node --watch app.js"
   },
-  "author": "Vincenzo Ferraro",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VincenzoFerraro0/express-blog-api-crud.git"
-  },
-  "bugs": {
-    "url": "https://github.com/VincenzoFerraro0/express-blog-api-crud/issues"
-  },
-  "homepage": "https://github.com/VincenzoFerraro0/express-blog-api-crud#readme",
-  "devDependencies": {},
-  "description": ""
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
 }
